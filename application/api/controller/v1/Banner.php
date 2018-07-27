@@ -11,16 +11,16 @@ class Banner {
 
     public function getBanner($id) {
 
-        phpinfo();
+        // phpinfo();
           
-        // validate('IDMustBePostiveInt')->goCheck();
+        validate('IDMustBePostiveInt')->goCheck();
 
-        // $bannerModel = new BannerModel;
-        // $banner = $bannerModel->getBannerByID($id);
+        $bannerModel = new BannerModel;
+        $banner = $bannerModel->getBannerByID($id);
 
-        // if(!$banner) {
-        //     throw new BannerMissException();
-        // }
-        // return $banner;
+        if(!$banner) {
+            throw new BannerMissException();
+        }
+        return $banner;
     }
 }
