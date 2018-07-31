@@ -12,17 +12,15 @@ class Banner {
     public function getBanner($id) {
 
         // phpinfo();
-
-        return '这是banner接口';
           
-        // validate('IDMustBePostiveInt')->goCheck();
+        validate('IDMustBePostiveInt')->goCheck();
 
-        // $bannerModel = new BannerModel;
-        // $banner = $bannerModel->getBannerByID($id);
+        $bannerModel = new BannerModel;
+        $banner = $bannerModel->getBannerByID($id);
 
-        // if(!$banner) {
-        //     throw new BannerMissException();
-        // }
-        // return $banner;
+        if(!$banner) {
+            throw new BannerMissException();
+        }
+        return $banner;
     }
 }
