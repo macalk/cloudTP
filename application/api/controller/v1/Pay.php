@@ -13,6 +13,7 @@ class Pay extends BaseController {
         'checkExclusiveScope' => ['only' => 'getPreOrder']
     ];
     
+    
     public function getPreOrder($id = ''){
         (new IDMustBePostiveInt()) -> goCheck();
         $pay = new PayService($id);
@@ -33,10 +34,12 @@ class Pay extends BaseController {
         // $notify->Handle();
 
         $xmlData = file_get_contents('php://input');
+        //转发给下面的方法能进入debug模式调试
         $result = curl_post_raw('http:/test.cn/api/v1/pay/re_notif?XDEBUG_SESSION_START=13133',$xmlData);
+        return $result;
     }
 
-    //支付回调
+    //支付回调debug模式下
     public function redirectNotify(){
         //通知频率15、15、30、180、1800、1800、1800、1800、3600秒
         //1、监测库存量,超卖

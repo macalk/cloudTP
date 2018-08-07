@@ -103,7 +103,7 @@ class Pay{
     //对wxOrder进行处理
     private function recordPreOrder($wxOrder) {
         OrderModel::where('id','=',$this->orderID)->update(['prepay_id'=>$wxOrder['prepay_id']]);
-
+        
     }
 
     private function checkOrderValid(){

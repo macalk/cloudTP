@@ -91,7 +91,6 @@ class Order{
     
             throw $ex;
         }
-        
     }
 
     //生成订单号

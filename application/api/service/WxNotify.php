@@ -9,7 +9,7 @@ use app\api\service\Order as OrderService;
 use app\api\model\Product;
 use app\lib\enum\OrderStatusEnum;
 
-use Esception;
+use Exception;
 use think\facade\Log;
 use think\Db;
 
@@ -35,7 +35,7 @@ class WxNotify extends \WxPay\WxPayNotify{
                 Db::commit();
                 return true;
             }
-            catch (Esception $ex){
+            catch (Exception $ex){
                 Db::rollback();
                 Log::error($ex);
                 return false;
@@ -51,7 +51,7 @@ class WxNotify extends \WxPay\WxPayNotify{
     }
     public function reduceStock($stockStatus){
         foreach ($stockStatus['pStatusArray'] as $singlePStauts) {
-            //$singlePStauts['count']  直接对数据库进行减法
+            //setDec  直接对数据库进行减法
             Product::where('id','=',$singlePStauts['id'])->setDec('stock',$singlePStauts['count']);
         }
 
