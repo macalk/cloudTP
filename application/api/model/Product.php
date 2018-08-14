@@ -32,7 +32,7 @@ class Product extends BaseModel
             'imgs' => function($query){
                 $query->with(['imgUrl'])->order('order asc');
             }
-        ])->with(['properties'])->find($id);
+        ])->find($id);
         return $product;
     }
 }
