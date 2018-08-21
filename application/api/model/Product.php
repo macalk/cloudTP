@@ -28,8 +28,9 @@ class Product extends BaseModel
     }
 
     public static function getProductDetail($id) {
-        $product = self::with(['imgs'=>function($query){$query->with(['imgUrl'])->order('order asc');}])->with(['properties'])->find($id);
-        return $product;
+        // $product = self::with(['imgs'=>function($query){$query->with(['imgUrl'])->order('order asc');}])->with(['properties'])->find($id);
+        // return $product;
+        return self::with('properties')->find($id);
     }
 }
  
