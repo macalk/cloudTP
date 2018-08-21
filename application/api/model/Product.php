@@ -24,7 +24,7 @@ class Product extends BaseModel
         return $this->hasMany('product_image', 'product_id', 'id');
     }
     public function properties(){
-        return $this->belongsTo('product_property','product_id','id');
+        return $this->hasOne('product_property','product_id','id');
     }
 
     public function items()
