@@ -24,18 +24,20 @@ class Product extends BaseModel
         return $this->hasMany('product_image', 'product_id', 'id');
     }
     public function properties(){
-        return $this->hasMany('product_property','product_id','id');
+        return $this->belongsTo('product_property','product_id','id');
     }
 
     public function items()
     {
-        return $this->hasMany('product_property','product_id','id');
+        return $this->hasMany('banner_item','banner_id','id');
     }
 
     public static function getProductDetail($id) {
         // $product = self::with(['imgs'=>function($query){$query->with(['imgUrl'])->order('order asc');}])->with(['properties'])->find($id);
         // return $product;
-        return self::with('items')->find($id);
+
+
+        return self::with('properties')->find($id);
         // return self::with(['items'])->find($id);
     }
 }
