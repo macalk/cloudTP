@@ -21,14 +21,14 @@ class Product extends BaseModel
     }
 
     public function imgs(){
-        return $this->hasMany('ProductImage','product_id','id');
+        return $this->hasMany('ProductImage', 'product_id', 'id');
     }
     public function properties(){
         return $this->hasMany('ProductProperty','product_id','id');
     }
 
     public static function getProductDetail($id) {
-        $product = self::with(['imgs'=>function($query){$query->with(['imgUrl'])->order('order asc');}])->find($id);
+        $product = self::with(['properties'])->find($id);
         return $product;
     }
 }
