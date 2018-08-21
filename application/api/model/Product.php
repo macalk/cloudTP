@@ -21,10 +21,10 @@ class Product extends BaseModel
     }
 
     public function imgs(){
-        return $this->hasMany('ProductImage', 'product_id', 'id');
+        return $this->hasMany('product_image', 'product_id', 'id');
     }
     public function properties(){
-        return $this->hasMany('ProductProperty','product_id','id');
+        return $this->hasMany('product_property','product_id','id');
     }
 
     public static function getProductDetail($id) {
