@@ -28,7 +28,7 @@ class Product extends BaseModel
     }
 
     public static function getProductDetail($id) {
-        $product = self::with(['properties'])->find($id);
+        $product = self::with(['properties'])->select($id);
         return $product;
     }
 }
