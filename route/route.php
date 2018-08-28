@@ -37,6 +37,8 @@ Route::get('api/:version/category/all','api/:version.Category/getAllCategories')
 
 //获取Token
 Route::Post('api/:version/token/user','api/:version.Token/getToken');
+//检测token
+Route::Post('api/:version/token/verify','api/:version.Token/verifyToken');
 
 //更新或新增收货地址
 Route::Post('api/:version/address','api/:version.Address/createOrUpdateAddress');

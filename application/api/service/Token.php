@@ -86,4 +86,14 @@ class Token{
         }
         return false;
     } 
+
+    //token是否有效
+    public static function verifyToken($token){
+        $exist = Cache::get($token);
+        if($exist) {
+            return true;
+        }else {
+            return false;
+        }
+    }
 }
