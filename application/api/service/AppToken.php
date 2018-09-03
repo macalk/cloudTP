@@ -25,4 +25,8 @@ class AppToken extends Token{
             return $token;
         }
     }
+
+    private function saveToCache($values){
+        
+    }
 }
