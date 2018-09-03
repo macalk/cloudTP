@@ -42,6 +42,8 @@ Route::Post('api/:version/token/verify','api/:version.Token/verifyToken');
 
 //更新或新增收货地址
 Route::Post('api/:version/address','api/:version.Address/createOrUpdateAddress');
+//获取用户地址
+Route::get('api/:version/address','api/:version.Address/getUserAddress');
 
 Route::Post('api/:version/second','api/:version.Order/second');
 Route::Post('api/:version/third','api/:version.Address/third');

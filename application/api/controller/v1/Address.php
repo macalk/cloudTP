@@ -6,6 +6,7 @@ use app\api\controller\BaseController;
 use app\api\validate\AddressNew;
 use app\api\service\Token as TokenService;
 use app\api\model\User as UserModel;
+use app\api\model\UserAddress;
 use app\lib\exception\UserException;
 use app\lib\exception\SuccessMessage;
 use app\lib\exception\TokenException;
@@ -30,7 +31,7 @@ class Address extends BaseController{
     // }
 
     protected $beforeActionList = [
-        'checkPrimaryScope' => ['only' => 'createOrUpdateAddress']
+        'checkPrimaryScope' => ['only' => 'createOrUpdateAddress,getUserAddress']
     ];
 
     public function createOrUpdateAddress(){
@@ -56,5 +57,19 @@ class Address extends BaseController{
             $user->address->save($dataArray);//更新
         }
         return new SuccessMessage();
+    }
+
+    public function getUserAddress(){
+        $uid = TokenService::getCurrentUid();
+        // var_dump($uid);
+        $userAddress = UserAddress::where('user_id',$uid)->find();
+        if(!$userAddress) {
+            throw new UserException([
+                'msg' => '用户地址不存在',
+                'errorCode' => 60001
+            ]);
+        }
+        return $userAddress;
+
     }
 }
